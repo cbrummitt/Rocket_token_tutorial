@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Rocket.Chat and token bot tutorial for The Adansonia Project by cbrummitt</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Rocket.Chat and token bot tutorial for The Adansonia Project</h1>
+      <h2 class="project-tagline">How to use Rocket.Chat to discuss and improve business ideas with fellow entrepreneurs</h2>
+      <a href="https://github.com/cbrummitt/Rocket_token_tutorial" class="btn">View on GitHub</a>
+      <a href="https://github.com/cbrummitt/Rocket_token_tutorial/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/cbrummitt/Rocket_token_tutorial/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h2>
+<a id="welcome-bowtie" class="anchor" href="#welcome-bowtie" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Welcome! <img class="emoji" title=":bowtie:" alt=":bowtie:" src="https://assets-cdn.github.com/images/icons/emoji/bowtie.png" height="20" width="20" align="absmiddle">
+</h2>
+
+<p><a href="https://rocket.chat/">Rocket.Chat</a> is a chat platform that enables you to connect with fellow entrepreneurs. It's useful for</p>
+
+<ul>
+<li>exchanging ideas <g-emoji alias="bulb" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a1.png" ios-version="6.0">💡</g-emoji>
+</li>
+<li>supporting each other in your business projects <g-emoji alias="briefcase" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4bc.png" ios-version="6.0">💼</g-emoji>
+</li>
+<li>and discussing topics of common interest <g-emoji alias="iphone" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4f1.png" ios-version="6.0">📱</g-emoji> <g-emoji alias="mortar_board" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f393.png" ios-version="6.0">🎓</g-emoji> <g-emoji alias="satellite" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4e1.png" ios-version="6.0">📡</g-emoji> <g-emoji alias="pill" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f48a.png" ios-version="6.0">💊</g-emoji> <g-emoji alias="book" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4d6.png" ios-version="6.0">📖</g-emoji> <g-emoji alias="factory" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f3ed.png" ios-version="6.0">🏭</g-emoji> <g-emoji alias="taxi" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f695.png" ios-version="6.0">🚕</g-emoji> <g-emoji alias="tractor" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f69c.png" ios-version="6.0">🚜</g-emoji> <g-emoji alias="egg" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f373.png" ios-version="6.0">🍳</g-emoji> <g-emoji alias="necktie" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f454.png" ios-version="6.0">👔</g-emoji> <g-emoji alias="tropical_drink" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f379.png" ios-version="6.0">🍹</g-emoji>
+</li>
+</ul>
+
+<p>Never used Rocket.Chat before? Don’t worry! This tutorial will teach you how to use it. </p>
+
+<p>Why learn to use Rocket.Chat? It's open source, free to use, and gaining traction. So it might be useful for communication among the team in the business that you're creating.</p>
+
+<hr>
+
+<h2>
+<a id="fast_forward-key-takeaways" class="anchor" href="#fast_forward-key-takeaways" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><g-emoji alias="fast_forward" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/23e9.png" ios-version="6.0">⏩</g-emoji> Key takeaways</h2>
+
+<ol>
+<li>
+<a href="#installing-and-setting-up-rocketchat">Install and set up Rocket.Chat</a>: 
+
+<ul>
+<li>
+<a href="https://rocket.chat/download"><g-emoji alias="arrow_down" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2b07.png" ios-version="6.0">⬇️</g-emoji> Download Rocket.Chat</a> on your smartphone <g-emoji alias="iphone" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4f1.png" ios-version="6.0">📱</g-emoji> or computer <g-emoji alias="computer" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4bb.png" ios-version="6.0">💻</g-emoji>
+</li>
+<li>Enter the server name sent to you in an email</li>
+<li>Create a username and password</li>
+</ul>
+</li>
+<li>
+<a href="#understanding-channels">Public channels</a> are like a coffeeshop or a market: a public place to meet and discuss. <a href="#understanding-channels">Private groups</a> are like a secret meeting with your closest advisors.</li>
+<li>
+<a href="#create-a-public-channel-for-your-business-project">Create your own public channel</a> about your business idea.
+
+<ul>
+<li>Put <code>p-</code> at the beginning of the channel name to mark it as a <strong>p</strong>roject. Give the channel a descriptive name such as <code>p-urban-farm</code>. </li>
+<li>
+<a href="#pushpin-pinning-messages"><g-emoji alias="pushpin" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4cc.png" ios-version="6.0">📌</g-emoji> Pin</a> your most important messages so that people can quickly understand your business project and help improve it.</li>
+</ul>
+</li>
+<li>Find other projects and try to help them with their business ideas. They may thank you with a token that could win you a prize! <g-emoji alias="money_with_wings" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4b8.png" ios-version="6.0">💸</g-emoji>
+</li>
+<li>Reward entrepreneurs who have given the most useful comments on your business idea by <a href="#tokens">giving them tokens</a>. </li>
+<li>Create public channels for general topics that you want to discuss with others, such as <code>#apps</code> and <code>#agriculture</code>. Announce the channel to everyone in <code>#general</code>.</li>
+<li>
+<a href="#mention-someone-to-get-their-attention-wave">Mention</a> other users by writing <code>@name</code> to notify them. Use <a href="#say-it-with-an-emoji-grin">emojis</a> to enliven your messages. <g-emoji alias="smiley" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f603.png" ios-version="6.0">😃</g-emoji> <g-emoji alias="sparkles" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2728.png" ios-version="6.0">✨</g-emoji> <g-emoji alias="tada" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f389.png" ios-version="6.0">🎉</g-emoji>
+</li>
+<li>Confused about using Rocket.Chat? <g-emoji alias="confused" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f615.png" ios-version="6.0">😕</g-emoji> Ask for help in the channel <code>#rocket-help</code> or look for answers in the <a href="https://rocket.chat/docs/user-guides/">official Rocket.Chat documentation</a>.</li>
+</ol>
+
+<hr>
+
+<h2>
+<a id="installing-and-setting-up-rocketchat" class="anchor" href="#installing-and-setting-up-rocketchat" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installing and setting up Rocket.Chat</h2>
+
+<ol>
+<li>
+<a href="https://rocket.chat/download"><g-emoji alias="arrow_down" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2b07.png" ios-version="6.0">⬇️</g-emoji> Download Rocket.Chat</a> on as many devices as you want (Android, iOS, Mac, Windows, Linux).</li>
+<li>Open the app and <strong>enter the server name</strong> that we sent to you via email. The server name looks like <code>&lt;server-name&gt;.rocket.chat</code>. Press <kbd>CONNECT</kbd>.</li>
+<li>Create a <strong>username and password</strong>:
+
+<ul>
+<li>Click on <kbd>Register new account</kbd> and fill in all the required information.</li>
+<li>We suggest that your <strong>username</strong> be your <strong>first name and last name separated by a dot</strong>. For example: <code>Barack.Obama</code>. That way, people can easily find you. </li>
+<li>When you are done, press <kbd>SUBMIT</kbd>, and you will see the homepage of the chat.</li>
+</ul>
+</li>
+</ol>
+
+<p>The video below illustrates steps 2 and 3:</p>
+
+<p><img src="images/registering-on-Rocket-shorter.gif" width="500" align="center"></p>
+
+<h3>
+<a id="add-a-profile-picture-man_with_turban-older_woman-japanese_ogre" class="anchor" href="#add-a-profile-picture-man_with_turban-older_woman-japanese_ogre" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Add a profile picture <g-emoji alias="man_with_turban" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f473.png" ios-version="6.0">👳</g-emoji> <g-emoji alias="older_woman" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f475.png" ios-version="6.0">👵</g-emoji> <g-emoji alias="japanese_ogre" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f479.png" ios-version="6.0">👹</g-emoji>
+</h3>
+
+<p>Add a profile picture so that others can associate a face (or a business logo) to your name:</p>
+
+<ul>
+<li>On the mobile app, tap on the three horizontal lines in the top-left corner to open the main menu.</li>
+<li>Tap on your username on the top.</li>
+<li>Tap on <code>My account</code>.</li>
+<li>Tap on <code>Avatar</code>.</li>
+<li>To upload a picture, click on <code>Select file</code> and choose a picture from your phone or computer. </li>
+</ul>
+
+<p>If you don’t upload a photo, your default avatar will be your initials. </p>
+
+<h2>
+<a id="understanding-channels" class="anchor" href="#understanding-channels" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Understanding channels</h2>
+
+<p>Conversations in Rocket.Chat are organized into <strong>channels</strong>. Channels are chat rooms with many useful features. There are three kinds of channels: </p>
+
+<ol>
+<li>
+<p><strong>Public channels</strong> are open spaces for discussion. Conversations in public channels are like those you have at a market or a city square. Everyone can </p>
+
+<ul>
+<li>
+<strong>see</strong> all public channels;</li>
+<li>
+<strong>preview</strong> the contents of all public channels;</li>
+<li>
+<strong>join</strong> any public channel (i.e., become a member of any channel).</li>
+</ul>
+</li>
+<li>
+<p><strong>Private Groups</strong> are closed channels. Only the members of a private group know that it exists and can see its contents. The person who creates a private group is the <strong>owner</strong>. The owner can </p>
+
+<ul>
+<li>
+<g-emoji alias="email" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2709.png" ios-version="6.0">✉️</g-emoji> invite people to join the private group; and</li>
+<li>
+<g-emoji alias="boot" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f462.png" ios-version="6.0">👢</g-emoji> kick people out of it.</li>
+</ul>
+</li>
+<li><p><strong>Direct Messages</strong> are private, 1-on-1 conversations. Think of a Direct Message as a private group with only two members.</p></li>
+</ol>
+
+<p>On the mobile app, swipe from left to right to see the list of channels appear on the left-hand side:</p>
+
+<p><img src="images/public-channel-private-group.png" alt="Example of public channel and private group" width="200"></p>
+
+<p><img src="images/DM-example.png" alt="Example of a direct message" width="200"></p>
+
+<h3>
+<a id="each-channel-has-a-list-of-members" class="anchor" href="#each-channel-has-a-list-of-members" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Each channel has a list of <em>members</em>
+</h3>
+
+<p>To see the members, tap on a channel in the list of channels to open it, and then tap on the <img src="images/members.png" alt="members" align="center" height="20"> icon on the right-hand side.</p>
+
+<h2>
+<a id="discuss-business-ideas" class="anchor" href="#discuss-business-ideas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Discuss business ideas</h2>
+
+<h3>
+<a id="create-a-public-channel-for-your-business-project" class="anchor" href="#create-a-public-channel-for-your-business-project" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Create a public channel for your business project</h3>
+
+<p><g-emoji alias="bangbang" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/203c.png" ios-version="6.0">‼️</g-emoji> <strong>Everyone should create a public channel dedicated to their business proposal.</strong> <g-emoji alias="bangbang" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/203c.png" ios-version="6.0">‼️</g-emoji></p>
+
+<p>This channel lets you share your business ideas with fellow entrepreneurs and get feedback from them. </p>
+
+<ol>
+<li>Tap on the three horizontal bars to bring up the menu on the left.</li>
+<li>Click on the <img src="images/plus%20rocket.PNG" align="center" alt="plus" height="20"> next to <code>CHANNELS</code>.</li>
+<li>
+<p><strong>Choose a channel name</strong> that </p>
+
+<ul>
+<li>begins with <code>p-</code> so that it is easy to identify channels dedicated to <strong>p</strong>rojects;</li>
+<li>ends with a description of the project, with words separated by hyphens <code>-</code>, or underscores <code>_</code>.</li>
+</ul>
+
+<p>For example: <code>p-urban-farm</code> or <code>p-taxi_app</code>.</p>
+</li>
+<li>When you are done, press <img src="images/create-button.png" alt="the CREATE button" align="center" height="20">.</li>
+</ol>
+
+<p>Now your project channel is ready! <g-emoji alias="tada" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f389.png" ios-version="6.0">🎉</g-emoji> </p>
+
+<p><img src="images/create-project-channel-loop.gif" alt="Create a project channel"></p>
+
+<p><strong>Announce your channel</strong> by writing a message in the public channel <code>#general</code>. Everyone is a member of <code>#general</code>. Refer to your project channel with a <code>#</code> at the beginning (such as <code>#p-urban-farm</code>) so that a link to your channel is automatically created. </p>
+
+<p><img src="images/announce-new-project-channel-loop.gif" alt="Announce a new project channel"></p>
+
+<p>By the way, use <code>#general</code> to send all kinds of announcements: about new channels you've created, ideas you want to discuss, or expertise you're searching for. </p>
+
+<p>If you want to discuss a certain topic such as <code>#apps</code> or <code>#internet-of-things</code>, <strong>create a separate public channel for it</strong>. Announce your new channel in <code>#general</code>, and invite users by typing the command <code>/invite @user</code> in your channel. Keep off topic discussion in the channel called <code>#random</code>.</p>
+
+<h3>
+<a id="pushpin-pinning-messages" class="anchor" href="#pushpin-pinning-messages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><g-emoji alias="pushpin" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4cc.png" ios-version="6.0">📌</g-emoji> Pinning messages</h3>
+
+<p>An important feature is <strong>pinning messages</strong>. We recommend that you pin the most important messages in your project channel, such as:</p>
+
+<ul>
+<li>summaries of your business proposal;</li>
+<li>questions that you have that others may help you with.</li>
+</ul>
+
+<p>When people join your project channel, they can easily understand your project by reading the pinned messages without having to scroll through the entire message history <g-emoji alias="relieved" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f60c.png" ios-version="6.0">😌</g-emoji>.</p>
+
+<p>To pin a message: </p>
+
+<ol>
+<li><p>click on the <img src="images/gear-icon.png" alt="gear" align="center" height="20"> icon next to the message;</p></li>
+<li><p>click on the pin icon <img src="images/pin-icon.png" alt="pin icon" align="center" height="20"></p></li>
+</ol>
+
+<p>Everyone can see the pinned messages of a channel by clicking on the <img src="images/pin-icon.png" alt="pin icon" align="center" height="20"> icon in the tool bar on the right.  </p>
+
+<h3>
+<a id="making-your-project-discussion-private" class="anchor" href="#making-your-project-discussion-private" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Making your project discussion private</h3>
+
+<p>We recommend that you keep your project channel public, at least for a while. Your ideas should reach as many fellow entrepreneurs as possible; otherwise you won’t get the chance to find valuable contributors! </p>
+
+<p>After a while, you may want to continue discussion in a private group. To do so, you can either</p>
+
+<ol>
+<li>
+<p><strong>create a new channel that is private</strong> by checking the box <code>PRIVATE GROUP</code> when you create the channel;</p>
+
+<p><img src="images/private%20group.PNG" alt="private group" align="center" height="40"></p>
+</li>
+<li><p>or <strong>convert a public channel to a private group</strong> by opening the channel and then clicking on the <img src="images/info-icon.png" alt="information" align="center" height="20"> icon.</p></li>
+</ol>
+
+<h2>
+<a id="channel-operations" class="anchor" href="#channel-operations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Channel operations</h2>
+
+<h3>
+<a id="joining-a-channel" class="anchor" href="#joining-a-channel" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Joining a channel</h3>
+
+<p>Now you are ready to start! You have a username, a channel and... a business idea to share and get feedback on from fellow entrepreneurs. And you can help others with their business ideas.</p>
+
+<p>To browse existing channels: </p>
+
+<ul>
+<li>click on the <img src="images/More%20channels.png" alt="More channels..." align="center" height="20"> button on the left-hand pane;</li>
+<li>click on the name of a channel to preview its discussion;</li>
+<li>if you find an interesting channel, join it by clicking on the <img src="images/JOIN.png" alt="JOIN" align="center" height="20"> button.</li>
+</ul>
+
+<h3>
+<a id="star-favorite-channels" class="anchor" href="#star-favorite-channels" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><g-emoji alias="star" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2b50.png" ios-version="6.0">⭐️</g-emoji> Favorite channels</h3>
+
+<p>All these channels may become difficult to handle: people like chatting, and channels may proliferate! To organize and prioritize your communications, we recommend you <strong>favorite</strong> (or <strong>star</strong>) channels, private groups, and DMs. </p>
+
+<p>To favorite a channel, click on the star icon in the upper left hand corner of the message area (next to the room name):</p>
+
+<p><img src="images/unstarred-channel.png" alt="Example of an unstarred channel" width="150"></p>
+
+<p>Then the star becomes yellow:</p>
+
+<p><img src="images/starred-channel.png" alt="Example of a starred channel" width="143"></p>
+
+<p>Now the channel will appear under the list of <strong>Favorites</strong> in the left-hand:</p>
+
+<p><img src="images/favorites-list.png" alt="Favorite channels" width="150"></p>
+
+<p>Starring helps you to focus on what's important to you.</p>
+
+<h3>
+<a id="hiding-and-leaving-channels" class="anchor" href="#hiding-and-leaving-channels" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hiding and leaving channels</h3>
+
+<p>You may realize after joining a channel that you are no longer interested in it. Don't worry; it's never too late to leave a channel! There are two ways to exit:</p>
+
+<ol>
+<li>You can <strong>hide</strong> to remove it from your list of channels. You still remain a member of the channel.
+
+<ul>
+<li>
+<g-emoji alias="computer" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4bb.png" ios-version="6.0">💻</g-emoji> On the desktop app, hover your mouse over the channel in the list of channels on the left-hand side, and click on the <img src="images/hide-icon.png" alt="eyeball" align="center" height="20"> button.</li>
+<li>
+<g-emoji alias="iphone" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4f1.png" ios-version="6.0">📱</g-emoji> On the mobile app, pull from the left-hand side to see the list of open channels, hold down on the channel name to bring up the buttons, and click on the <img src="images/hide-icon.png" alt="eyeball" align="center" height="20"> button.</li>
+</ul>
+</li>
+<li>You can <strong>leave</strong> a channel, which will remove it from your list of channels and remove you as a member of the channel.
+
+<ul>
+<li>
+<g-emoji alias="computer" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4bb.png" ios-version="6.0">💻</g-emoji> On the desktop app, hover your mouse over the channel in the list of channels on the left-hand side, and click on the <img src="images/leave-icon.png" alt="right arrow" align="center" height="20"> button.</li>
+<li>
+<g-emoji alias="iphone" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4f1.png" ios-version="6.0">📱</g-emoji> On the mobile app, enter the message <code>/leave</code> or <code>/part</code> in the channel. </li>
+</ul>
+</li>
+</ol>
+
+<h2>
+<a id="messaging-page_with_curl" class="anchor" href="#messaging-page_with_curl" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Messaging <g-emoji alias="page_with_curl" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4c3.png" ios-version="6.0">📃</g-emoji>
+</h2>
+
+<p>Type messages in the message box and press <kbd>⏎</kbd> (<kbd>Enter</kbd>) or the send button <img src="images/send-icon.png" alt="Send icon" align="center" height="20">. If you want to send multiple lines of text, press <kbd>⇧</kbd> <kbd>⏎</kbd> (<kbd>Shift</kbd> <kbd>Enter</kbd>) to move to the next line.</p>
+
+<h3>
+<a id="mention-someone-to-get-their-attention-wave" class="anchor" href="#mention-someone-to-get-their-attention-wave" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Mention <code>@someone</code> to get their attention <g-emoji alias="wave" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f44b.png" ios-version="6.0">👋</g-emoji>
+</h3>
+
+<p>To get someone’s attention, type <code>@</code> followed by their username, for example <code>@Barack.Obama</code>. (Rocket.Chat automatically completes someone's username as you type it.) Then your friend <code>@Barack.Obama</code> will see a red badge on the channel and will be notified via email or his mobile device.</p>
+
+<p>To notify everyone in a channel, write <code>@all</code>. But remember, <code>@all</code>  notifies <em>everyone</em>! It can be useful for important announcements. But it can be distracting if abused, so use <code>@all</code> sparingly.</p>
+
+<h3>
+<a id="referring-to-previous-messages-point_up_2" class="anchor" href="#referring-to-previous-messages-point_up_2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Referring to previous messages <g-emoji alias="point_up_2" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f446.png" ios-version="6.0">👆</g-emoji>
+</h3>
+
+<p>To refer to a previous message in a conversation, you can grab a link to a certain message:</p>
+
+<ul>
+<li>
+<g-emoji alias="computer" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4bb.png" ios-version="6.0">💻</g-emoji> On the desktop app, hover the mouse over a message, click on the gear icon <img src="images/gear-icon.png" alt="gear icon" align="center" width="20">, and click on the link <img src="images/link-icon.png" alt="link icon" align="center" height="20">. </li>
+<li>
+<g-emoji alias="iphone" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4f1.png" ios-version="6.0">📱</g-emoji> On the mobile app, press and hold on a message, click on <code>Permalink</code>. </li>
+</ul>
+
+<p>This copies to your clipboard a link to that message. Paste that link into a new message to create a clickable link and a preview to the old message.</p>
+
+<h3>
+<a id="say-it-with-an-emoji-grin" class="anchor" href="#say-it-with-an-emoji-grin" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Say it with an emoji! <g-emoji alias="grin" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f601.png" ios-version="6.0">😁</g-emoji>
+</h3>
+
+<p>To insert emoji in a message, hit the emoji button <img src="images/emoji-picker-icon.png" align="center" alt="smiley icon" height="20"> to the right of the text input to open an emoji picker:</p>
+
+<p><img src="images/emoji-picker.png" align="center" alt="emoji picker" width="300"></p>
+
+<p>You can also type your desired emoji by wrapping its name with <code>:</code>. For example, <code>:heart:</code> produces <g-emoji alias="heart" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2764.png" ios-version="6.0">❤️</g-emoji>.</p>
+
+<h3>
+<a id="emoji-reactions" class="anchor" href="#emoji-reactions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Emoji reactions</h3>
+
+<p>You can also <em>react</em> to a message with an emoji. </p>
+
+<ul>
+<li>
+<p>On the <strong>desktop</strong> application: hover over a message, click on the gear icon <img src="images/gear-icon.png" align="center" alt="gear icon" width="20">, click on the smiling face icon</p>
+
+<p><img src="images/emoji-reaction.png" align="center" alt="How to choose an emoji reaction" height="50"></p>
+</li>
+<li><p>On the <strong>mobile</strong> application: press and hold your finger on a message to bring up a menu, press <code>Reactions</code></p></li>
+</ul>
+
+<p>Then choose an emoji from the emoji picker, and the emoji appears below the message: </p>
+
+<p><img src="images/emoji-reaction-result.png" align="center" alt="Example of an emoji reaction" height="75"></p>
+
+<p>To remove an emoji reaction, click on the emoji below the message. To reiterate an existing emoji reaction that someone else posted, click on that emoji to add to that emoji's counter.</p>
+
+<h2>
+<a id="tokens" class="anchor" href="#tokens" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tokens</h2>
+
+<p>Discussing your business ideas with others can improve them. </p>
+
+<p><g-emoji alias="bangbang" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/203c.png" ios-version="6.0">‼️</g-emoji> <strong>To acknowledge other entrepreneurs for their ideas and contributions, thank them by giving them a <em>token</em></strong>. <g-emoji alias="bangbang" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/203c.png" ios-version="6.0">‼️</g-emoji></p>
+
+<p>Giving a token to someone is a way to say</p>
+
+<blockquote>
+<p>Thank you! You have really helped me with my business plan. Let's keep interacting!</p>
+</blockquote>
+
+<p>At the end of the contest, venture capitalists and other investors will evaluate business plans. They will also decide which ones they want to fund. </p>
+
+<p><strong>If you hold a token given by someone whose business plan was highly rated by the investors, then that token is a lottery ticket <g-emoji alias="ticket" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f3ab.png" ios-version="6.0">🎫</g-emoji> for a prize:</strong> </p>
+
+<ul>
+<li>
+<g-emoji alias="airplane" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2708.png" ios-version="6.0">✈️</g-emoji> <g-emoji alias="school" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f3eb.png" ios-version="6.0">🏫</g-emoji> <g-emoji alias="briefcase" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4bc.png" ios-version="6.0">💼</g-emoji> <g-emoji alias="city_sunrise" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f307.png" ios-version="6.0">🌇</g-emoji> The prize is an all-expenses-paid trip to Milan <g-emoji alias="it" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f1ee-1f1f9.png" ios-version="6.0">🇮🇹</g-emoji> for a business training course at the <a href="http://www.unibocconi.eu/">Business School of Bocconi University</a>, one of the best business schools in Europe. The cost of this intensive course, lodging, and travel will be fully covered. There may also be an opportunity to pitch to investors in Milan. </li>
+<li><strong>The more you help others with their projects, the more tokens you will be given, and the more chances you have at winning this prize.</strong></li>
+</ul>
+
+<h3>
+<a id="giving-tokens" class="anchor" href="#giving-tokens" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Giving tokens</h3>
+
+<p>Everyone begins with <strong>only 5 tokens</strong>, so give them wisely.</p>
+
+<p>To transfer tokens, we have created a "bot" named <code>@token</code>. This bot is a robot <g-emoji alias="robot" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f916.png" ios-version="9.1">🤖</g-emoji> who is a member of your team. This bot responds to certain commands. You can talk to <code>@token</code> in a direct message or in any public channel.</p>
+
+<p>To give a token to <code>@someone</code>, send the message <code>/give @someone</code> in any public channel or in a direct message to <code>@token</code>:</p>
+
+<p><img src="images/token/give_user.png" alt="Example of giving one token" width="450"></p>
+
+<p>The bot <code>@token</code> responds by confirming that you successfully gave a token to that user, and <code>@token</code> tells you how many tokens you have left to give. </p>
+
+<p>To thank someone for significantly helping your business plan, you can give them <em>multiple tokens</em>. You can do so using multiple <code>/give @someone</code> commands. Or you can send multiple tokens all at once by writing <code>/give 3 @someone</code> or <code>/give all @someone</code>:</p>
+
+<p><img src="images/token/give_3_user.png" alt="Example of giving three tokens" width="450"></p>
+
+<h3>
+<a id="revoking-tokens" class="anchor" href="#revoking-tokens" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Revoking tokens</h3>
+
+<p>Did you regret giving a token to someone? You can revoke it with the command <code>/revoke @someone</code>:</p>
+
+<p><img src="images/token/revoke_user.png" align="center" alt="Example of revoking one token" width="450"></p>
+
+<p>You can also revoke more than one token by writing <code>/revoke 2 @someone</code>.</p>
+
+<h3>
+<a id="who-has-the-most-tokens" class="anchor" href="#who-has-the-most-tokens" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Who has the most tokens?</h3>
+
+<p>To find out who currently has the most tokens (given to them by other people), send the message <code>/leaderboard</code> in a public channel or in a direct message with the <code>@token</code> bot. Then the <code>@token</code> bot responds to you in a direct message with the ranking:</p>
+
+<p><img src="images/token/leaderboard.png" align="center" alt="leaderboard" height="325"></p>
+
+<h3>
+<a id="status-of-my-tokens" class="anchor" href="#status-of-my-tokens" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Status of my tokens</h3>
+
+<p>If you don't remember how many tokens you have, send the message <code>/status</code> in a public channel or in a direct message to the <code>@token</code> bot. Then the bot sends you a direct message that summarizes the tokens you have left to give, have given, and have received:</p>
+
+<p><img src="images/token/status.png" align="center" alt="tokens status" width="450"></p>
+
+<h3>
+<a id="learn-more-about-interacting-with-the-token-bot" class="anchor" href="#learn-more-about-interacting-with-the-token-bot" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Learn more about interacting with the <code>@token</code> bot</h3>
+
+<p>More details on how to send, receive, and check the status of tokens is available in <a href="https://github.com/cbrummitt/token-bot/wiki/@token-bot-cheat-sheet">this token-bot user guide</a>.</p>
+
+<h2>
+<a id="advanced-topics" class="anchor" href="#advanced-topics" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Advanced topics</h2>
+
+<h3>
+<a id="mag-search-messages" class="anchor" href="#mag-search-messages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><g-emoji alias="mag" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f50d.png" ios-version="6.0">🔍</g-emoji> Search messages</h3>
+
+<p>Rocket.Chat allows you to search within channels for messages that you want to see again. To do so, just click on the <strong>search icon</strong> <img src="images/search-icon.png" alt="Search icon" height="20" align="center"> in the vertical toolbar on the right. In the search bar, type one or more keywords included in the chat message that you want to find. </p>
+
+<h3>
+<a id="set-the-topic-of-a-channel" class="anchor" href="#set-the-topic-of-a-channel" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Set the topic of a channel</h3>
+
+<p>In addition to </p>
+
+<ul>
+<li>choosing a <a href="#create-a-public-channel-for-your-business-project">descriptive name for your project's channel</a> and</li>
+<li>
+<a href="#pushpin-pinning-messages">pinning important messages</a> that summarize your project</li>
+</ul>
+
+<p>you can help users understand your project by setting a <strong>topic</strong> for your project channel. A topic is a small amount of text that appears in small, gray font next to your channel name: </p>
+
+<p><img src="images/channel_name_with_topic.png" alt="Example of a channel name with a topic next to it" align="center" width="450"></p>
+
+<p>Keep the topic short because not much can fit next to the channel name. To assign a topic to your channel, you can either</p>
+
+<ol>
+<li>write the command <code>/topic growing vegetables on rooftops</code>;</li>
+<li>or click on the information icon <img src="images/info-icon.png" alt="information" align="center" height="17"> and click on the pencil button <img src="images/pencil.png" alt="pencil icon" align="center" height="17"> under <strong>Topic</strong>.</li>
+</ol>
+
+<h3>
+<a id="pencil2-editing-messages" class="anchor" href="#pencil2-editing-messages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><g-emoji alias="pencil2" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/270f.png" ios-version="6.0">✏️</g-emoji> Editing messages</h3>
+
+<p>You can edit a message in Rocket.Chat after you have sent it. </p>
+
+<ul>
+<li> <g-emoji alias="iphone" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4f1.png" ios-version="6.0">📱</g-emoji> On the mobile app, press and hold on a message to bring up the menu, and click on <code>Edit</code>. </li>
+<li> <g-emoji alias="computer" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4bb.png" ios-version="6.0">💻</g-emoji> On the desktop app, click on the gear icon <img src="images/gear-icon.png" alt="gear icon" align="center" width="20"> next to the message, and then click on the pencil icon <img src="images/pencil.png" alt="pencil icon" align="center" height="17">. Alternatively, hit the <kbd>Up Arrow</kbd> in the message input box.</li>
+</ul>
+
+<p>Then the message box has a yellow background, meaning that you can edit the message. Then hit the send button <img src="images/send-icon.png" alt="Send icon" align="center" height="20">. Now <img src="images/edited-by.png" alt="edited by icon" align="center" height="15"> appears next to that message.</p>
+
+<p>You can also <strong>delete</strong> a message: </p>
+
+<ul>
+<li> <g-emoji alias="iphone" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4f1.png" ios-version="6.0">📱</g-emoji> On the mobile app, press and hold on a message to bring up the menu, and click on <code>Delete</code>. </li>
+<li> <g-emoji alias="computer" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4bb.png" ios-version="6.0">💻</g-emoji> On the desktop app, click on the gear icon <img src="images/gear-icon.png" alt="gear icon" align="center" width="20"> next to the message, and then click on the trash icon <img src="images/trash.png" alt="trash icon" align="center" height="17">.</li>
+</ul>
+
+<p>Another way to delete a message is to edit the message to have no content.</p>
+
+<h3>
+<a id="online-away-busy-and-invisible" class="anchor" href="#online-away-busy-and-invisible" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Online, Away, Busy, and Invisible</h3>
+
+<p>At the top of the main menu, you see your username. If you click on it, then you can change your status between Online, Away, Busy, and Invisible:</p>
+
+<p><img src="images/online-away-busy-invisible.png" alt="Online, Away, Busy, and Invisible" width="250"></p>
+
+<p>If you choose "Invisible", then others will think that you are not online. But we don't recommend you be an invisible ghost <g-emoji alias="ghost" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f47b.png" ios-version="6.0">👻</g-emoji>!</p>
+
+<h2>
+<a id="passwords-and-logging-in" class="anchor" href="#passwords-and-logging-in" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Passwords and logging in</h2>
+
+<h3>
+<a id="worried-help-i-cant-log-in-to-rocketchat" class="anchor" href="#worried-help-i-cant-log-in-to-rocketchat" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><g-emoji alias="worried" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f61f.png" ios-version="6.0">😟</g-emoji> Help, I can't log in to Rocket.Chat!</h3>
+
+<p>There are a few common reasons for being unable to log in: </p>
+
+<ol>
+<li>
+<strong>Forgotten password</strong>: If you are unable to log into Rocket.Chat, first try resetting your password. The login screen has a button <kbd> Forgot your password </kbd>.<br>
+</li>
+<li>
+<strong>Updating files takes a long time</strong>. Rocket.Chat is being improved every week, so the app periodically asks you to update the software. If it takes a long time to update files, try quitting the app and opening it again. You could try skipping the update and wait to update the app until you are connected to wifi.</li>
+<li>
+<strong>Wrong server</strong>: You may be trying to log into the wrong server. A Rocket.Chat server looks like <code>server-name.rocket.chat</code>, where <code>server-name</code> is replaced by the name of your server. (A Rocket.Chat server may also have <code>https://</code> in the beginning.) Your server name was sent to you in an email. The next section explains how to change the server you are trying to log into.</li>
+</ol>
+
+<p>If you are still having trouble logging in, send <a href="mailto:charles_brummitt@hms.harvard.edu">an email to Charlie</a>.</p>
+
+<h4>
+<a id="switching-servers" class="anchor" href="#switching-servers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Switching servers</h4>
+
+<p>If you belong to multiple servers on Rocket.Chat (such as <code>demo.rocket.chat</code> and one for the Adansonia Project), you can easily switch among them. </p>
+
+<ul>
+<li>
+<p><g-emoji alias="computer" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4bb.png" ios-version="6.0">💻</g-emoji> On the desktop app, the servers are listed on the far left-hand side. You can switch between servers by pressing <kbd>⌘ Command</kbd> followed by a number.</p>
+
+<p><img src="images/different-servers-desktop-app.png" height="150" alt="list of servers" align="center"></p>
+</li>
+<li>
+<p><g-emoji alias="iphone" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4f1.png" ios-version="6.0">📱</g-emoji> On the mobile app, at the login screen where you enter your user name and password, <strong>swipe up with two fingers</strong> to bring up a screen at which you select the server: </p>
+
+<p><img src="images/login-screen-swipe.png" width="200" alt="swipe up on the login screen" align="center">
+<img src="images/server-list.png" width="200" alt="list of servers" align="center"></p>
+</li>
+</ul>
+
+<h3>
+<a id="lock-change-your-password" class="anchor" href="#lock-change-your-password" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><g-emoji alias="lock" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f512.png" ios-version="6.0">🔒</g-emoji> Change your password</h3>
+
+<p>If you ever want to change your password, do the following:</p>
+
+<ul>
+<li>Open the main menu. 
+
+<ul>
+<li>
+<g-emoji alias="iphone" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4f1.png" ios-version="6.0">📱</g-emoji> On the mobile app, tap on the three horizontal lines in the top-left corner to open the main menu</li>
+<li>
+<g-emoji alias="computer" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4bb.png" ios-version="6.0">💻</g-emoji> On the desktop app, make sure the window is large enough to see the list of channels on the left side; otherwise, click on the three horizontal lines in the top-left corner.</li>
+</ul>
+</li>
+<li>Click on your username</li>
+<li>Click on <code>My account</code>
+</li>
+<li>Click on <code>Profile</code>
+</li>
+</ul>
+
+<h2>
+<a id="learn-more-at-the-rocketchat-documentation" class="anchor" href="#learn-more-at-the-rocketchat-documentation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Learn more at the <a href="https://rocket.chat/docs/user-guides/">Rocket.Chat documentation</a>
+</h2>
+
+<ul>
+<li><a href="https://rocket.chat/docs/user-guides/keyboard-shortcuts/">Keyboard shortcuts</a></li>
+<li><a href="https://rocket.chat/docs/user-guides/notifications/">Setup desktop and push notifications</a></li>
+<li><a href="https://rocket.chat/docs/user-guides/file-uploads/">Upload files</a></li>
+</ul>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/cbrummitt/Rocket_token_tutorial">Rocket.Chat and token bot tutorial for The Adansonia Project</a> is maintained by <a href="https://github.com/cbrummitt">cbrummitt</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
