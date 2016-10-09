@@ -16,7 +16,7 @@ Why learn to use Rocket.Chat? It's open source, free to use, and gaining tractio
 
 ## :fast_forward: Key takeaways
 
-1. [Install and set up Rocket.Chat](#installing-and-setting-up-rocketchat): 
+1. [Install and set up the Rocket.Chat app](#installing-and-setting-up-rocketchat): 
 	- [:arrow_down: Download Rocket.Chat](https://rocket.chat/download) on your smartphone :iphone: or computer :computer:
 	- Enter the server name sent to you in an email
 	- Create a username and password
@@ -32,11 +32,14 @@ Why learn to use Rocket.Chat? It's open source, free to use, and gaining tractio
 
 ---
 
-## Installing and setting up Rocket.Chat
+## Installing and setting up the Rocket.Chat app
 
+You can use Rocket.Chat in your web browser; just enter `http://<server-name>.rocket.chat` in your web broswer, where `<server-name>` is the name of the server that was sent to you in an email. 
+
+You can also use Rocket.Chat in an app. Here's how.
 1. [:arrow_down: Download Rocket.Chat](https://rocket.chat/download) on as many devices as you want (Android, iOS, Mac, Windows, Linux).
-2. Open the app and **enter the server name** that we sent to you via email. The server name looks like `<server-name>.rocket.chat`. Press <kbd>CONNECT</kbd>.
-3. Create a **username and password**:
+2. Open the app and **enter the server name** that we sent to you via email. The server name looks like `<server-name>.rocket.chat`. (Note that `https://<server-name>.rocket.chat` works, too.) Press <kbd>CONNECT</kbd>.
+3. If you haven't already registered on your Rocket.Chat server, then create a **username and password**:
 	* Click on <kbd>Register new account</kbd> and fill in all the required information.
 	* We suggest that your **username** be your **first name and last name separated by a dot**. For example: `Barack.Obama`. That way, people can easily find you. 
 	* When you are done, press <kbd>SUBMIT</kbd>, and you will see the homepage of the chat.
